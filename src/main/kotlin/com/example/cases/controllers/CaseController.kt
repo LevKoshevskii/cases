@@ -1,4 +1,4 @@
-package com.example.cases.rest
+package com.example.cases.controllers
 
 import com.example.cases.service.WordSpellService
 import com.example.cases.service.WordSpellServiceImpl

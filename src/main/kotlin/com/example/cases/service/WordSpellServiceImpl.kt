@@ -8,6 +8,7 @@ import ru.morpher.ws3.russian.*
 class WordSpellServiceImpl: WordSpellService{
 
     constructor()
+
     override fun spell(word: String): List<String> {
 
         val result:MutableList<String> = ArrayList()

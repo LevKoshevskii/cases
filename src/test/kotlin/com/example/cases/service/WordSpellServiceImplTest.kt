@@ -1,9 +1,16 @@
 package com.example.cases.service
 
-import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
 
+import org.junit.jupiter.api.Assertions.*
+import org.springframework.beans.factory.annotation.Autowired
 
-class WordSpellServiceImplTest {
+internal class WordSpellServiceImplTest {
+    private val wordSpellService =  WordSpellServiceImpl()
 
+    @Test
+    fun spell() {
+        Assertions.assertEquals(listOf("Лев","Льва","Льву","Льва","Львом","Льве"),wordSpellService.spell("Лев"))
+    }
 }
