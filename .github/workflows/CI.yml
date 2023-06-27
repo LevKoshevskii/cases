@@ -26,7 +26,7 @@ jobs:
 
       - name: Check build status
         run: |
-          if [ ${{ failure() }} == 'true' ]; then
+          if [ ${{ job.status }} != 'success' ]; then
             echo "Build failed, reverting changes..."
             git reset --hard HEAD^
             git push -f
