@@ -1,1 +1,41 @@
+name: CI
 
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+
+      - name: Build and test
+        run: |
+          ./gradlew build || { echo "Build failed"; exit 1; }
+          ./gradlew test || { echo "Tests failed"; exit 1; }
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          context: ./auth_server/
+          push: true
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build Docker image
+        run: docker build -t cases .
+
+      - name: Tag Docker image
+        run: docker tag cases:latest 2651915/cases:latest
+
+      - name: Push Docker image
+        run: docker push 2651915/cases:latest
