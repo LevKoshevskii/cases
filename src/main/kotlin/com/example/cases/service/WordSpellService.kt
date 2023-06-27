@@ -2,5 +2,5 @@ package com.example.cases.service
 
 interface WordSpellService {
 
-    fun spell(word:String): List<String>
+    fun spell(word: String): List<String>
 }
