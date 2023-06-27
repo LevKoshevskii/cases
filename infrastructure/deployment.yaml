@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cases-app
+  name: cases-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cases-app
+  template:
+    metadata:
+      labels:
+        app: cases-app
+    spec:
+      containers:
+        - image: 2651915/cases:latest
+          name: cases
+          ports:
+            - containerPort: 8080
+              name: http
