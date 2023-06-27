@@ -20,6 +20,6 @@ class CaseController {
         produces = [MediaType.APPLICATION_JSON_UTF8_VALUE]
     )
     fun speller(@PathVariable("word") word: String): List<String> {
-        return wordSpellService.spell(word)
+        return wordSpellServiceqweqwe.spell(word)
     }
 }
