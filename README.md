@@ -69,7 +69,7 @@ kubectl --namespace monitoring port-forward {результат предыдущ
 Grafana будет доступна по [ссылке](http://localhost:3000/).
 
 ## How to use?
-Обратитеть к http://localhost:3000/{word} через адресную строку браузера или postman, заменил {word} на необходимое слово.
+Обратитеть к http://localhost:8080/{word} через адресную строку браузера или postman, заменив {word} на необходимое слово.
 
 ## Авторы
 * Кошевский Лев
