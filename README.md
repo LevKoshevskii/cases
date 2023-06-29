@@ -9,7 +9,7 @@ Date of create: 15.06.2023
 Date of finished: 30.06.2023
 ```
 ## Ход работы
-Создаём образ нашей программы при помощиdocker build . -t cases`
+Создаём образ нашей программы при помощи `docker build . -t cases`
 ![image](https://github.com/LevKoshevskii/cases/assets/116584865/34d05be3-05d7-4353-b34d-dcd370f67108)
 Проверяем список контейнеров командой `docker ps`
 ![image](https://github.com/LevKoshevskii/cases/assets/116584865/8e31791c-815b-47e7-af99-3873f44e6499)
