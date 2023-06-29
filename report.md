@@ -34,15 +34,27 @@ Date of finished: 30.06.2023
 ![image](https://github.com/LevKoshevskii/cases/assets/116584865/c01a4967-aa86-4b59-bbcf-e80584bca8ad)
 Проверяем работу программы: разбиваем по падежам слово "Контернеризация"
 ![image](https://github.com/LevKoshevskii/cases/assets/116584865/71e22daf-d38d-408b-bf89-361cb6156f2f)
-
-
-
-
-
-
-
-
-
-
-2. 
-3. 
+Устанавливаем helm при помощи `choco install kubernetes-helm`
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/101a34fb-4d99-4a69-88db-0356ebf4a553)
+Добавлям репозиторий prometheus-community, pull'им его, и запускаем с помощью команд:
+`helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
+`helm repo update`
+`helm pull prometheus-community/prometheus`
+`helm upgrade --install --create-namespace --values prometheus-values.yaml prometheus -n monitoring prometheus-community/prometheus`
+Аналогичным образом разворачиваем grafan'у и trickster
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/c902106d-f985-4f6e-8bcd-486265551546)
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/ad6ea7b0-cc8a-4967-b69c-c51d77bec6ab)
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/8ea58d3d-7545-4d7a-bbaf-aee1f8a9087f)
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/1d14b2aa-70f2-4bde-8493-ecf33853ae3e)
+Для доступа к grafana получаем название название pod'a и пробрасываем к нему порты с помощью команд:
+`get pods --namespace monitoring -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=grafana" -o jsonpath = "{.items[0].metadata.name}"`
+`kubectl --namespace monitoring port-forward grafana-59cf79859c-2bfq5 3000`
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/4983d22f-661b-48e3-85bf-e782583a1678)
+Заходи в графану по ссылке lochalhost:3000 и создаем ресурс, в адресе указываем адрес trickster
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/fdbee351-7376-4e24-ba0a-4f1561b78bdb)
+Импортируем готовый dashboard
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/0a245f47-66ad-4d5f-a583-d72ff9399385)
+С помощью Apache Jmeter сделаем нагрузку на приложение, для проверки работоспособности мониторинга
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/679a5c56-ecf1-40f6-9202-3322b289d84b)
+Нагрузка на CPU возросла
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/28bf847f-c9eb-483a-b036-9bc05eb9ecef)
