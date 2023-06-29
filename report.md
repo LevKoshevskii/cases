@@ -69,6 +69,8 @@ Date of finished: 30.06.2023
 ![image](https://github.com/LevKoshevskii/cases/assets/46699832/fdbee351-7376-4e24-ba0a-4f1561b78bdb)
 
 Импортируем готовый dashboard
+![image](https://github.com/LevKoshevskii/cases/assets/46699832/ab4d9221-c513-41e5-b723-db0f3c4177b1)
+
 С помощью Apache Jmeter сделаем нагрузку на приложение, для проверки работоспособности мониторинга
 ![image](https://github.com/LevKoshevskii/cases/assets/46699832/679a5c56-ecf1-40f6-9202-3322b289d84b)
 
